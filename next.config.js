@@ -3,12 +3,14 @@ const path = require('path');
 
 const nextConfig = {
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'your-production-domain.com'], // Add your production domain here
+    deviceSizes: [640, 768, 1024, 1280, 1600], // Optional: Define responsive sizes
   },
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': path.resolve(__dirname, 'src'), // Replace 'src' with the base directory of your components if different
+      '@': path.resolve(__dirname, 'src'), // Alias for accessing components
+      '@images': path.resolve(__dirname, 'public/images'), // Alias for accessing images
     };
     return config;
   },
